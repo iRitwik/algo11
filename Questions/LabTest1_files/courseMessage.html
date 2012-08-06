@@ -1,0 +1,317 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+   <title>CS21003/CS29003</title>
+   <style type="text/css">
+      body {margin:0px}
+      p {text-align:justify}
+      li {text-align:justify}
+      dd {text-align:justify}
+      a {text-decoration:none}
+      a:hover {text-decoration:none; background:#bb2266; color:#ffffdd}
+      table {border:solid thin}
+      td {border:solid thin}
+      th {border:solid thin}
+      #nobd {border:none}
+   </style>
+</head>
+<body alink="#000000" link="#bb2266" text="#552200" vlink="#bb2266" bgcolor="#ffffff">
+<blockquote>
+<h2 align="center">Lab Test 1</h2>
+<h3 align="left">Part 1 [Maximum marks: 30]</h3>
+<blockquote>
+<p>A binary tree is supplied in the data file against your name.
+Read the file, and create the tree in the standard pointer-based repreentation.
+Maintain links for left and right chlidren. Don't maintain parent links.
+In the first line of the file, the number of nodes is supplied. If this
+number is <i>n</i>, nodes in the tree are identified as 0,1,2,<tt>...</tt>,n&nbsp;-&nbsp;1.
+For each node, its ID and the IDs of its two child nodes are supplied in the file
+(-1 indicates no child, that is, NULL). While creating the tree, you also need to
+identify the root of the tree (it is <b>not</b> the node with ID 0). Return
+a pointer to the root node. In all of the subsequent parts, this pointer
+should be passed as the tree, not the raw data from the file.
+</p><p><b>Hint:</b> After you read <i>n</i> from the input file, allocate a dynamic
+array of <i>n</i> tree nodes. Then, read the input file, and create child
+connections. The unique node which is not the child of any other node is the
+root node. However, if you are more comfortable with the conventional recursive
+way of creating the binary tree, store the data from the file in some
+array(s).
+</p><h3 align="left"><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/redirect.html">Redirecting a file to your program</a></h3>
+</blockquote>
+<h3 align="left">Part 2 [Maximum marks: 30]</h3>
+<blockquote>
+<p>Print all the leaves of the tree.
+</p></blockquote>
+<h3 align="left">Part 3 [Maximum marks: 20]</h3>
+<blockquote>
+<p><b>Students with odd PC numbers:</b> Determine the maximum level in the tree
+at which a leaf appears.
+</p><p><b>Students with even PC numbers:</b> Determine the minimum level in the tree
+at which a leaf appears.
+</p><p>The root is assumed to be at level zero, its children at level 1, and so on.
+</p></blockquote>
+<h3 align="left">Part 4 [Maximum marks: 20]</h3>
+<blockquote>
+<p><b>Students with odd PC numbers:</b> Print all the leaf nodes at the maximum level.
+</p><p><b>Students with even PC numbers:</b> Print all the leaf nodes at the minimum level.
+</p></blockquote>
+<p></p><h3 align="left"><a href="http://cse.iitkgp.ac.in/%7Ewbcm/">Submission site</a></h3>
+<p>You must submit your C/C++ source file, and the output of your program
+on <b>your</b> input file given below.
+</p><h3 align="left">Input and output files</h3>
+<ol>
+<p></p><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/07NA3014-input.txt">07NA3014 Chandrakant Bharti</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/07NA3014-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/08CS3027-input.txt">08CS3027 Shyam Kumar Murmu</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/08CS3027-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/08MA2024-input.txt">08MA2024 Rachit Murarka</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/08MA2024-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/08ME1006-input.txt">08ME1006 Suvodhoy Sinha</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/08ME1006-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09CS1044-input.txt">09CS1044 Putty Vikas</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09CS1044-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09CS1046-input.txt">09CS1046 Mood Vamshi Krishna Naik</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09CS1046-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09CS3031-input.txt">09CS3031 Balaga Prasanth</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09CS3031-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09CS3034-input.txt">09CS3034 Rahul</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09CS3034-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09CY2007-input.txt">09CY2007 Rajul</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09CY2007-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09EC1024-input.txt">09EC1024 Arijit Layek</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09EC1024-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09EC3022-input.txt">09EC3022 Amit Kumar</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09EC3022-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09IE1029-input.txt">09IE1029 Prashant Kumar Singh</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09IE1029-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09ME1059-input.txt">09ME1059 Siddharth S Bhandari</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09ME1059-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09ME3030-input.txt">09ME3030 Prateek Anand</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/09ME3030-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CH10030-input.txt">10CH10030 Pranjal Goswami</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CH10030-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10001-input.txt">10CS10001 Aakaash Panigrahi</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10001-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10002-input.txt">10CS10002 Aayush Sureka</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10002-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10003-input.txt">10CS10003 Akhil Israni</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10003-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10004-input.txt">10CS10004 Animesh Sinha</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10004-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10005-input.txt">10CS10005 Anish Haldiya</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10005-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10006-input.txt">10CS10006 Anjani Kumar</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10006-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10007-input.txt">10CS10007 Ankit Khedia</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10007-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10008-input.txt">10CS10008 Apoorv Raj</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10008-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10009-input.txt">10CS10009 B Sai Krishna</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10009-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10010-input.txt">10CS10010 Banavath Aditya Naik</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10010-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10011-input.txt">10CS10011 Deepak Khaneja</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10011-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10012-input.txt">10CS10012 E V V Devi Sandeep</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10012-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10013-input.txt">10CS10013 Gadde Ravi Teja</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10013-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10014-input.txt">10CS10014 Gokul Chand Meena</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10014-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10015-input.txt">10CS10015 Jilla Vivek</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10015-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10016-input.txt">10CS10016 K Sai Sreemukh</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10016-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10017-input.txt">10CS10017 Kanwar Pal Dhande</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10017-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10018-input.txt">10CS10018 Kaushik Kumar Mahato</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10018-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10019-input.txt">10CS10019 Lava Kumar Bokam</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10019-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10020-input.txt">10CS10020 Malay Pramanick</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10020-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10021-input.txt">10CS10021 Mandeep Singh Gill</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10021-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10022-input.txt">10CS10022 Manish Mittal</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10022-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10023-input.txt">10CS10023 Milind Mandlik</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10023-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10024-input.txt">10CS10024 Mohammad Salman</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10024-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10025-input.txt">10CS10025 Nadeem Anjum</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10025-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10026-input.txt">10CS10026 Naval Kishore Peepliwal</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10026-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10027-input.txt">10CS10027 Navgeet Agrawal</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10027-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10028-input.txt">10CS10028 Nerella Venkata Sravan Kishan</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10028-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10029-input.txt">10CS10029 Nishant Dalmia</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10029-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10030-input.txt">10CS10030 Padamata Mruthyunjaya Rao</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10030-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10031-input.txt">10CS10031 Palash Goyal</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10031-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10032-input.txt">10CS10032 Pilaka Sireesha</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10032-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10033-input.txt">10CS10033 Ponkishore B</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10033-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10034-input.txt">10CS10034 Potharaju Sri Vidya Pranavi</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10034-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10035-input.txt">10CS10035 Ravella Chaitanya Sreenivas</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10035-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10036-input.txt">10CS10036 Rohit Kumar</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10036-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10037-input.txt">10CS10037 Ronak Kumar Heliwal</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10037-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10038-input.txt">10CS10038 Sahil Sharma</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10038-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10039-input.txt">10CS10039 Sandeep Kumar Sahu</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10039-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10040-input.txt">10CS10040 Shabahat Shakeel</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10040-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10041-input.txt">10CS10041 Shashwat Kumar</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10041-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10042-input.txt">10CS10042 Shivangi Agarwal</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10042-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10043-input.txt">10CS10043 Srikar Polipalli</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10043-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10044-input.txt">10CS10044 Suhansanu Kumar</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10044-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10045-input.txt">10CS10045 Sumit Kumar</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10045-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10046-input.txt">10CS10046 Sumit Saurabh</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10046-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10047-input.txt">10CS10047 Suraj Kumar</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10047-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10048-input.txt">10CS10048 Sushovan Mandal</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10048-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10049-input.txt">10CS10049 Swetha Tibrewal</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10049-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10050-input.txt">10CS10050 Tadishetti Ramteja</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10050-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10051-input.txt">10CS10051 Tauseef Nomani</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10051-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10052-input.txt">10CS10052 Vadlamudi Jaya Krishna</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10052-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10053-input.txt">10CS10053 Vemula Rohith</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10053-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10054-input.txt">10CS10054 Vipul Jain</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10054-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10055-input.txt">10CS10055 Vyas Yogarshi Paritosh</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10055-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10056-input.txt">10CS10056 Yelam Anil Kumar</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10056-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10057-input.txt">10CS10057 Abhishek Panigrahy</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10057-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10058-input.txt">10CS10058 Pujari Rajkumar</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10058-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10059-input.txt">10CS10059 Saurabh Shukla</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10059-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10060-input.txt">10CS10060 M Dastagiri Reddy</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10060-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10061-input.txt">10CS10061 Himanshu Tiwari</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS10061-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30001-input.txt">10CS30001 Aakash Goenka</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30001-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30002-input.txt">10CS30002 Abhishek</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30002-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30003-input.txt">10CS30003 Abhishek Gupta</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30003-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30004-input.txt">10CS30004 Akash Amat</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30004-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30005-input.txt">10CS30005 Akash Maurya</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30005-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30006-input.txt">10CS30006 Akash Shah</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30006-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30007-input.txt">10CS30007 Amit Kumar Pandey</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30007-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30008-input.txt">10CS30008 Arunender Singhh</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30008-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30009-input.txt">10CS30009 Ashish Vasava</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30009-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30010-input.txt">10CS30010 Ashwani Attri</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30010-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30011-input.txt">10CS30011 Bathulwar Akash</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30011-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30012-input.txt">10CS30012 Bhadreswar Ghuku</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30012-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30013-input.txt">10CS30013 Buha Rajan Govindbhai</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30013-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30014-input.txt">10CS30014 Challamalla Venkata Charan Teja</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30014-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30015-input.txt">10CS30015 Chitukuri Architha</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30015-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30016-input.txt">10CS30016 Degwekar Anand Dhananjai</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30016-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30017-input.txt">10CS30017 Devender</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30017-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30018-input.txt">10CS30018 Dewesh Agrawal</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30018-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30019-input.txt">10CS30019 Gurman Bhalla</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30019-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30020-input.txt">10CS30020 Harmanpreet Singh</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30020-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30021-input.txt">10CS30021 Imran</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30021-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30022-input.txt">10CS30022 Jeldi Ratan Rahul</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30022-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30023-input.txt">10CS30023 Kale Aditya Ashok</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30023-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30024-input.txt">10CS30024 Khade Nilesh Gajanan</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30024-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30025-input.txt">10CS30025 Komal Agrawal</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30025-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30026-input.txt">10CS30026 Kontham Rajesh</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30026-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30027-input.txt">10CS30027 Krishna Kant Sijariya</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30027-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30028-input.txt">10CS30028 Mohit Sharma</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30028-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30029-input.txt">10CS30029 Om Misra</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30029-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30031-input.txt">10CS30031 Parantap Sharma</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30031-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30032-input.txt">10CS30032 Pratapa Srihari Vijayendra</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30032-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30033-input.txt">10CS30033 Rahul Dewangan</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30033-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30034-input.txt">10CS30034 Ritwik Yadav</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30034-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30035-input.txt">10CS30035 Rohan Jain</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30035-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30036-input.txt">10CS30036 Saurabh Agarwal</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30036-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30037-input.txt">10CS30037 Shambhu Prasad</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30037-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30038-input.txt">10CS30038 Shubhang Verma</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30038-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30039-input.txt">10CS30039 Siddharth Kumar</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30039-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30040-input.txt">10CS30040 Akhil Saxena</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30040-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30041-input.txt">10CS30041 Pyreddy Mary Arpita</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30041-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30042-input.txt">10CS30042 Saurabh Hota</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30042-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30043-input.txt">10CS30043 Aakash Anuj</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30043-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30044-input.txt">10CS30044 Yetesh Chaudhary</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10CS30044-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10EC10008-input.txt">10EC10008 Avinash Ruchandani</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10EC10008-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10EC10058-input.txt">10EC10058 Tippa Veera Venkata Satish</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10EC10058-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10EC30013-input.txt">10EC30013 Baheti Priyanka Sushil</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10EC30013-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10EC30031-input.txt">10EC30031 Shreeja Subrata Datta</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/10EC30031-output.txt">Output</a>]
+<p></p></li><li><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/99FB1331-input.txt">99FB1331 Foolan Barik</a>
+[<a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/lt1-data/99FB1331-output.txt">Output</a>]
+</li></ol>
+<p></p><h3 align="left"><a href="http://cse.iitkgp.ac.in/%7Ewbcm/">Submission site</a></h3>
+<hr noshade="noshade" size="2">
+<div align="right"><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/">Back</a>&nbsp;|&nbsp;<a href="http://cse.iitkgp.ac.in/%7Eabhij/">Home</a></div>
+</blockquote>
+
+
+</body></html>

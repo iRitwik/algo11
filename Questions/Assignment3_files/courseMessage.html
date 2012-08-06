@@ -1,0 +1,178 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+   <title>CS21003/CS29003</title>
+   <style type="text/css">
+      body {margin:0px}
+      p {text-align:justify}
+      li {text-align:justify}
+      dd {text-align:justify}
+      a {text-decoration:none}
+      a:hover {text-decoration:none; background:#bb2266; color:#ffffdd}
+      table {border:solid thin}
+      td {border:solid thin}
+      th {border:solid thin}
+      #nobd {border:none}
+   </style>
+</head>
+<body alink="#000000" link="#bb2266" text="#552200" vlink="#bb2266" bgcolor="#ffffff">
+<blockquote>
+<h2 align="center">Programming Assignment 3</h2>
+
+<p></p><h3 align="center">Realization of a Spell Checker Using AVL Trees</h3>
+<p>In this assignment, you prepare height-balanced trees in order to store
+a dictionary of words. Assume that we are dealing with a language called
+Funglish for which a <a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/wordlist.txt">word list</a> is provided.
+For simplicity, we assume that Funglish has only two- to eight-letter
+words. The <a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/wordlist.txt">word-list file</a> contains these
+words in a random order and with repetitions. Funglish is case-insensitive,
+so you do not need to worry about distinguishing between lower and upper
+cases. Work consistently with upper-case letters.
+
+</p><p></p><h3 align="left">Creating the AVL trees</h3>
+<p>Read the word list from the <a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/lab/wordlist.txt">supplied file</a>,
+and for each <i>i</i> in the range [2,8], store all <i>i</i>-letter words
+in an AVL tree <i>T</i><sub><i>i</i></sub>. Your dictionary is stored
+as a collection of the seven trees <i>T</i><sub>2</sub>, <i>T</i><sub>3</sub>,
+<tt>...</tt>, <i>T</i><sub>8</sub>. You may use the following data types
+to store the dictionary.
+</p><pre>   typedef struct _treenode {
+      char *word;
+      struct _treenode *left;
+      struct _treenode *right;
+      struct _treenode *parent;
+      int balancefactor;
+   } AVLtreenode;
+
+   typedef AVLtreenode *AVLtree;
+
+   typedef AVLtree *dictionary;
+</pre>
+
+<p>This is a kind of hashed AVL forest, where an initial hashing is done
+with respect to the lengths of the words. Initially, create seven empty
+trees. Subsequently, as you read the word-list file, insert each word in
+the appropriate tree based upon the length of the word. Use a <i>single</i>
+function for insertion in an AVL tree.
+
+</p><p>This is a static dictionary, and sorted arrays could have served our
+purpose. But this exercise is meant for playing with height-balanced
+trees. In this exercise, you never delete any word from the dictionary, so
+there is no need to write the deletion function for AVL trees.
+
+</p><p>After the entire word-list is read, compute and report the heights
+of all the seven trees.
+
+</p><p>Using the following command, you can sort the word-list file,
+remove duplicates from it, and store the list in a file <tt>wordlist-sorted-nodup.txt</tt>.
+</p><pre>   $ sort wordlist.txt | uniq &gt; wordlist-sorted-nodup.txt
+</pre>
+<p>Build the seven trees using this processed word-list file, and report the
+heights of the seven trees. It is very interesting to note that if the items
+input to an AVL tree appear in the sorted order, the result is a <i>perfectly
+balanced</i> binary search tree. Try to prove this assertion as a theoretical
+exercise (not for submission).
+
+</p><p><b>
+<a href="http://cse.iitkgp.ac.in/%7Epds/notes/io.html#fileio">How to do File I/O in C</a>
+</b></p><p><b>
+<a href="http://cse.iitkgp.ac.in/%7Epds/notes/array.html#string">String functions in C</a>
+</b>
+
+</p><p></p><h3 align="left">Spell Checking</h3>
+<p>Generate a random (purportedly Funglish) word with the following constraints.
+</p><ul>
+<li>The length of the word is randomly chosen between two and eight (both inclusive).
+</li><li>A letter in the word is chosen according to the following probability
+distribution. The relative frequencies of the different letters (in a total
+of 100) are provided in the table below.
+<center>
+<table cellpadding="5" cellspacing="0" border="0">
+<tbody><tr><td>A</td><td>B</td><td>C</td><td>D</td><td> E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z
+</td></tr><tr><td>9</td><td>2</td><td>2</td><td>6</td><td>11</td><td>4</td><td>3</td><td>2</td><td>9</td><td>1</td><td>1</td><td>4</td><td>2</td><td>4</td><td>8</td><td>2</td><td>1</td><td>6</td><td>5</td><td>6</td><td>4</td><td>2</td><td>2</td><td>1</td><td>2</td><td>1
+</td></tr></tbody></table>
+</center>
+</li><li>Two consecutive vowels or two consecutive consonants occur relatively
+infrequently.
+</li></ul>
+
+<p>Search the word generated in your dictionary. If the word is found, do
+nothing. Otherwise, generate spell-correcting suggestions. There are four
+groups of words that are suggested.
+</p><ul>
+<li><b>Group 1:</b> Delete any one letter from the given word.
+</li><li><b>Group 2:</b> Add one letter at any position of the given word.
+</li><li><b>Group 3:</b> Change any single letter of the given word.
+</li><li><b>Group 4:</b> Swap any two letters of the given word.
+</li></ul>
+<p>Report all the suggested words that are present in the dictionary.
+
+</p><p></p><h3 align="left">Destroy the Dictionary</h3>
+<p>After the spell-checking work is done, destroy the dictionary. This means
+that any dynamic memory allocated to store the dictionary is to be freed.
+This includes the memory associated with the char array in each node (field
+<tt>word</tt> in data type <tt>AVLtreenode</tt>), the memory associated
+with each node (allocated to the <tt>left</tt> or <tt>right</tt> pointer of
+some node), and also the memory associated with the array of seven tree
+headers (data type <tt>dictionary</tt>).
+
+</p><p></p><h3 align="left">Sample Output</h3>
+Present your output as in the following format.
+<pre>   Height of D[2] = 9
+   Height of D[3] = 11
+   ...
+   Height of D[8] = 22
+
+   Searching for word "SE"       : Found
+
+   Searching for word "ETEDOGE"  : Not found
+   Spell check suggestions:
+           Group 1: 
+           Group 2: FETEDOGE 
+           Group 3: ESEDOGE ETEDAGE ETEDOCE ETEDOLE ETEDORE ETEDOSE ETEDOTE 
+           Group 4: EDETOGE ETODEGE ETEDEGO 
+
+   Searching for word "RUS"      : Found
+
+   Searching for word "OCUCU"    : Not found
+   Spell check suggestions:
+           Group 1: CUCU 
+           Group 2: 
+           Group 3: 
+           Group 4: 
+
+   Searching for word "TWESOM"   : Not found
+   Spell check suggestions:
+           Group 1: WESOM TESOM 
+           Group 2: 
+           Group 3: 
+           Group 4: 
+
+   Searching for word "RILISA"   : Not found
+   Spell check suggestions:
+           Group 1: ILISA 
+           Group 2: 
+           Group 3: GILISA PILISA RIDISA RIFISA RIRISA RISISA RITISA RILINA RILIQA RILISF 
+           Group 4: SILIRA 
+
+   Searching for word "URARE"    : Not found
+   Spell check suggestions:
+           Group 1: RARE 
+           Group 2: BURARE HURARE TURARE URARER URARES 
+           Group 3: ERARE IRARE UFARE UJARE UMARE UNARE UTARE URASE URATE URARA URARU 
+           Group 4: 
+
+   Searching for word "ELDIRIT"  : Not found
+   Spell check suggestions:
+           Group 1: 
+           Group 2: 
+           Group 3: 
+           Group 4: 
+</pre>
+
+<p></p><h3 align="left"><a href="http://cse.iitkgp.ac.in/%7Ewbcm/">Submission site</a></h3>
+<hr noshade="noshade" size="2">
+<div align="right"><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/theory/Algo1/Autumn11/">Back</a>&nbsp;|&nbsp;<a href="http://cse.iitkgp.ac.in/%7Eabhij/">Home</a></div>
+</blockquote>
+
+
+</body></html>

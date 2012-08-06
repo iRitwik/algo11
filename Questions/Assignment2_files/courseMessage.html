@@ -1,0 +1,175 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+   <title>CS21003/CS29003</title>
+   <style type="text/css">
+      body {margin:0px}
+      p {text-align:justify}
+      li {text-align:justify}
+      dd {text-align:justify}
+      a {text-decoration:none}
+      a:hover {text-decoration:none; background:#bb2266; color:#ffffdd}
+      table {border:solid thin}
+      td {border:solid thin}
+      th {border:solid thin}
+      #nobd {border:none}
+   </style>
+</head>
+<body alink="#000000" link="#bb2266" text="#552200" vlink="#bb2266" bgcolor="#ffffff">
+<blockquote>
+<h2 align="center">Programming Assignment 2</h2>
+<p></p><h3 align="center">Realization of Graphic Sequences Using Binomial Heaps</h3>
+<p></p><h3 align="left">Graphic sequences</h3>
+<p>Let <i>G</i> = (<i>V</i>,<i>E</i>) be an undirected graph with <i>n</i> vertices.
+Denote the vertex set of <i>G</i> as {0,&nbsp;1,&nbsp;2,&nbsp;<tt>...</tt>,&nbsp;<i>n</i>&nbsp;-&nbsp;1}. Let the
+degree of the vertex <i>i</i> be denoted as <i>d<sub>i</sub></i>.
+We call <i>d</i><sub>0</sub>,&nbsp;<i>d</i><sub>1</sub>,&nbsp;<i>d</i><sub>2</sub>,&nbsp;<tt>...</tt>,&nbsp;<i>d</i><sub><i>n</i>&nbsp;-&nbsp;1</sub>
+a <i>graphic sequence</i>. Given a sequence of non-negative integers,
+your task is to first determine whether the sequence belongs to a graph,
+and if so, construct a graph with that degree sequence.
+</p><p>Read <i>n</i> from the user, and randomly generate an array <i>d</i>&nbsp;[&nbsp;]
+of <i>n</i> non-negative integers (between 0 and <i>n</i>&nbsp;-&nbsp;1). Sort the array
+in decreasing order. Erdös and Gallai (1960) proved that this sequence is
+graphic if and only if <i>d</i><sub>0</sub>&nbsp;+&nbsp;<i>d</i><sub>1</sub>&nbsp;+&nbsp;<i>d</i><sub>2</sub>&nbsp;+&nbsp;<tt>....</tt>&nbsp;+&nbsp;<i>d</i><sub><i>n</i>&nbsp;-&nbsp;1</sub> is even, and
+for all <i>k</i>&nbsp;=&nbsp;0,&nbsp;1,&nbsp;2,&nbsp;<tt>...</tt>,&nbsp;<i>n</i>&nbsp;-&nbsp;1,
+the following inequality holds:
+</p><blockquote>
+<i>d</i><sub>0</sub>&nbsp;+&nbsp;<i>d</i><sub>1</sub>&nbsp;+&nbsp;<i>d</i><sub>2</sub>&nbsp;+&nbsp;<tt>...</tt>&nbsp;+&nbsp;<i>d</i><sub><i>k</i></sub>&nbsp;&lt;=&nbsp;<i>k</i>(<i>k</i>+1)&nbsp;+&nbsp;min(<i>d</i><sub><i>k</i>+1</sub>,k+1)&nbsp;+&nbsp;min(<i>d</i><sub><i>k</i>+2</sub>,k+1)&nbsp;+&nbsp;min(<i>d</i><sub><i>k</i>+3</sub>,k+1)&nbsp;+&nbsp;<tt>...</tt>&nbsp;+&nbsp;min(<i>d</i><sub><i>n</i>-&nbsp;&nbsp;1</sub>,k+1).
+</blockquote>
+<p>Use this criterion to check whether the random sequence generated above
+is graphic. If not, quit. Otherwise, proceed as follows.
+</p><p>
+Havel (1955) and Hakimi (1961) give an algorithm to construct a graph with a
+given graphical degree sequence. The basic idea is to choose the largest
+degree <i>d</i> in the sequence. Connect a vertex to <i>d</i> vertices
+of the next highest degrees. Iterate until no vertices are left whose
+degrees remain to be balanced. The following pseudocode implements
+Havel and Hakimi's algorithm.
+</p><blockquote>
+Create an empty graph <i>G</i>.<br>
+Insert <i>d</i><sub>0</sub>,&nbsp;<i>d</i><sub>1</sub>,&nbsp;<i>d</i><sub>2</sub>,&nbsp;<tt>...</tt>,&nbsp;<i>d</i><sub><i>n</i>&nbsp;-&nbsp;1</sub> in a heap <i>H</i>.<br>
+While <i>H</i> is not empty, repeat {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<i>d</i>,<i>u</i>) = findmax(<i>H</i>).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>H</i> = delmax(<i>H</i>).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Initialize <i>H</i><sub>1</sub> to an empty heap.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for <i>i</i> = 1,2,<tt>...</tt>,<i>d</i>, do {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<i>r</i>,<i>v</i>) = findmax(<i>H</i>).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>H</i> = delmax(<i>H</i>).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add the undirected edge (<i>u</i>,<i>v</i>) to <i>G</i>.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Insert (<i>r</i> - 1,<i>v</i>) to <i>H</i><sub>1</sub> (may be conditionally when <i>r</i>&nbsp;&gt;&nbsp;1).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<i>H</i> = merge(<i>H</i>,<i>H</i><sub>1</sub>).<br>
+}<br>
+</blockquote>
+<p>The following figure illustrates the working of the above algorithm.
+The residual degrees (that is, degrees yet to be balanced) are shown beside
+the vertices.
+</p><p></p><center><img src="courseMessage_data/graphicseq.jpg" width="500"></center>
+<p>The Havel-Hakimi algorithm seems to highlight the necessity of having efficiently
+mergeable heaps. Is this the reason why we should discard our basic binary heaps?
+Well, no. Indeed, using suitable augmentation, a binary heap too can be
+used in this application. Even a decreasingly sorted array with re-sorting
+after each iteration of the Havel-Hakimi loop also offers an efficient
+algorithm. It is only that implementing binomial heaps is part
+(the major part actually) of this assignment. So enter the realm of
+segmentation faults. Sorry for <i>spoiling</i> your evening(s)!!!
+</p><p></p><h3 align="left">Binomial trees</h3>
+<p>The binomial tree <i>B<sub>k</sub></i> of order <i>k</i> is a rooted tree
+defined recursively as follows. <i>B</i><sub>0</sub> contains only one node
+(which is the root). For <i>k</i>&nbsp;&gt;&nbsp;1, the tree <i>B<sub>k</sub></i> has
+<i>k</i> child nodes, where the <i>i</i>-th child node is the
+root of the tree <i>B</i><sub><i>k</i>&nbsp;-&nbsp;<i>i</i></sub> for
+<i>i</i>&nbsp;=&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;<tt>...</tt>,&nbsp;<i>k</i>.
+The binomial tree <i>B</i><sub>4</sub> is shown in the figure below.
+</p><p></p><center><img src="courseMessage_data/binotree4.jpg" width="300"></center>
+<p>Store a binomial tree as a binary tree in the first-child-next-sibling
+representation. Each node in the tree should store a degree (the residual
+degree) and a vertex number (in addition to the pointers).
+</p><p>
+Write a function that, given two disjoint binomial trees of the
+same order <i>k</i> in the first-child-next-sibling representation,
+returns the binomial tree of order <i>k</i>&nbsp;+&nbsp;1 in the same representation.
+Your function should run in O(1) time. Make the tree with the smaller
+root value (the degree) the first child of the root with the larger
+value.
+</p><p></p><h3 align="left">Binomial heaps</h3>
+<p>Binomial heaps, also called <i>binomial queues</i>, are introduced by
+Jean Vuillemin in 1978.
+Any non-negative integer <i>n</i> can be uniquely represented as
+<i>n</i>&nbsp;=&nbsp;2<sup><i>k</i><sub>1</sub></sup>&nbsp;+&nbsp;2<sup><i>k</i><sub>2</sub></sup>&nbsp;+&nbsp;<tt>...</tt>&nbsp;+&nbsp;2<sup><i>k</i><sub><i>r</i></sub></sup>
+with 0&nbsp;&lt;=&nbsp;<i>k</i><sub>1</sub>&nbsp;&lt;&nbsp;k<sub>2</sub>&nbsp;&lt;&nbsp;<tt>...</tt>&nbsp;&lt;&nbsp;<i>k</i><sub><i>r</i></sub>
+for some <i>r</i>&nbsp;&gt;&nbsp;=&nbsp;0. A binomial heap <i>H</i> storing <i>n</i> elements
+has the following two properties:
+</p><ul>
+<li><b>Structural property:</b> <i>H</i> is represented by the collection of the
+<i>r</i> binomial trees <i>B</i><sub><i>k</i><sub>1</sub></sub>,&nbsp;<i>B</i><sub><i>k</i><sub>2</sub></sub>,&nbsp;<tt>...</tt>,&nbsp;<i>B</i><sub><i>k</i><sub><i>r</i></sub></sub>.
+</li><li><b>Ordering property:</b> Each node in the forest stores a value (degree)
+larger than or equal to the values stored in all its child nodes.
+</li></ul>
+<p>
+In order to store a binomial heap, create a linked list of
+the roots of the binomial trees sorted in the increasing order of the
+orders of the trees. The following figure shows a binomial heap with
+11&nbsp;=&nbsp;1&nbsp;+&nbsp;2&nbsp;+&nbsp;8 elements. A dummy node is used at the beginning of the linked
+list. This would help the implementations of insertion and deletion in
+<i>H</i>.
+</p><p></p><center><img src="courseMessage_data/binoheap.jpg" width="600"></center>
+<p>First, write a function to <b>merge</b> two binomial heaps. The process
+mimics the bit-by-bit addition operation of integers with carry propagation.
+The following figure demonstrates merging two heaps of sizes 11 and 7
+respectively.
+</p><p></p><center><img src="courseMessage_data/binoheapmerge.jpg" width="1000"></center>
+<p></p><h3 align="left"><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/lab/Algo1/Autumn11/lab/binoheapmergeimpl.jpg">A more concrete example</a></h3>
+<p>Write a linear-time divide-and-conquer function <b>makeheap()</b> in order
+to create an initial heap on the random degree sequence. Use the merge
+function described above.
+</p><p>Write an <b>insert()</b> function to insert a single element to a binomial
+heap. Convert the element to be inserted into a one-element heap,
+and then merge this one-element heap with the other heap.
+</p><p>Write a function <b>findmax()</b> to locate the binomial tree in a heap,
+whose root contains the maximum value (degree).
+</p><p>Write a function to <b>delete the maximum</b> from a binomial heap.
+In order to do that, first locate the tree <i>B</i> whose root contains the
+maximum element. Let this tree be of order <i>i</i>. Deleting the
+root creates <i>i</i> binomial trees (the children of the deleted
+root). Insert these trees in a temporary heap. Delete the tree <i>B</i>
+from the original heap. Merge the temporary heap with the original
+heap.
+</p><p></p><h3 align="left">Check for Correctness</h3>
+<p>Using the heap functions, implement the Havel-Hakimi algorithm.
+The representation of the graph (adjacency matrix or adjacency list)
+is your choice. After the termination of the Havel-Hakimi algorithm,
+compute the degrees of the nodes in the graph created. If all the
+degrees match with the respective degrees input to the Havel-Hakimi
+algorithm, your program is obviously correct.
+</p><p></p><h3 align="left">Sample Output</h3>
+Present your output as in the following format.
+<pre>   $ ./a.out 89
+   +++ Sequence generated:
+     82,  80,  80,  80,  80,  79,  79,  78,  77,  77,  75,  73,  73,  71,  70,  67,
+     67,  67,  66,  66,  65,  64,  64,  62,  61,  61,  59,  58,  58,  57,  57,  54,
+     53,  52,  47,  47,  46,  46,  45,  44,  41,  41,  40,  40,  39,  37,  37,  37,
+     36,  34,  32,  32,  31,  29,  29,  28,  28,  27,  26,  24,  22,  21,  20,  20,
+     20,  19,  18,  18,  17,  17,  16,  15,  13,  13,  13,  13,  12,  11,  11,  10,
+      8,   8,   8,   5,   4,   3,   2,   1,   1
+   *** Error: The sequence is not graphic...
+   $ ./a.out 89
+   +++ Sequence generated:
+     82,  81,  80,  79,  78,  78,  77,  75,  75,  73,  73,  72,  72,  71,  69,  69,
+     69,  69,  68,  68,  68,  67,  66,  65,  63,  63,  60,  59,  57,  56,  55,  55,
+     54,  53,  53,  52,  51,  50,  50,  50,  50,  49,  47,  47,  45,  45,  45,  44,
+     43,  41,  41,  41,  40,  39,  38,  36,  35,  35,  34,  34,  34,  33,  33,  33,
+     29,  29,  28,  27,  27,  26,  25,  24,  22,  19,  18,  18,  18,  14,  14,  13,
+     10,  10,   9,   8,   5,   4,   3,   1,   0
+   +++ Degree sequence is graphic...
+   +++ Degree sequence stored in heap...
+   +++ Graph generated...
+   +++ Correctness verified...
+   $
+</pre>
+<p></p><h3 align="left"><a href="http://cse.iitkgp.ac.in/%7Ewbcm/">Submission site</a></h3>
+<hr noshade="noshade" size="2">
+<div align="right"><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/lab/Algo1/Autumn11/">Back</a>&nbsp;|&nbsp;<a href="http://cse.iitkgp.ac.in/%7Eabhij/">Home</a></div>
+</blockquote>
+
+
+</body></html>

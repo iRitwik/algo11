@@ -1,0 +1,155 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+   <title>CS21003/CS29003</title>
+   <style type="text/css">
+      body {margin:0px}
+      p {text-align:justify}
+      li {text-align:justify}
+      dd {text-align:justify}
+      a {text-decoration:none}
+      a:hover {text-decoration:none; background:#bb2266; color:#ffffdd}
+      table {border:solid thin}
+      td {border:solid thin}
+      th {border:solid thin}
+      #nobd {border:none}
+   </style>
+</head>
+<body alink="#000000" link="#bb2266" text="#552200" vlink="#bb2266" bgcolor="#ffffff">
+<blockquote>
+<h2 align="center">Programming Assignment 1</h2>
+<p></p><h3 align="left">The Traveling Salesperson Problem (TSP)</h3>
+<p>A set of <i>n</i> cities along with the costs <i>d</i>(<i>i</i>,<i>j</i>)
+of traveling between cities <i>i</i> and <i>j</i> are given.  Assume that
+the cost function is symmetric, that is, <i>d</i>(<i>i</i>,<i>j</i>)&nbsp;=&nbsp;<i>d</i>(<i>j</i>,<i>i</i>)
+for all <i>i</i> and <i>j</i>. Assume also that <i>d</i>(<i>i</i>,<i>i</i>)&nbsp;=&nbsp;0 for all <i>i</i>.
+The task is to find a closed route (cycle) through the cities such that each city is
+visited once and only once, and the total cost of travel in the route is minimized.
+Since the salesperson is making a closed tour, there is no harm in assuming that the tour
+starts (and ends) at City&nbsp;0.
+</p><p>The TSP is a difficult computational problem. In your second algorithms course,
+you would learn that no polynomial-time algorithms exist for solving
+TSP (unless P&nbsp;=&nbsp;NP, an unresolved question which is popularly believed to
+be false). In this exercise, you are supposed to implement several algorithms to
+solve the TSP. These algorithms are of two types. First, you implement two
+algorithms that compute the exact minimum cost (along with a shortest route).
+These algorithms are slow, and cannot handle a large number of cities.
+Algorithms of the second type are fast but are not guaranteed to supply the
+minimum possible solution. They instead supply only close-to-best (suboptimal)
+solutions.
+</p><p>Before implementing the algorithms for TSP, you need to prepare data for
+<i>n</i> cities. Read <i>n</i> from the user, and generate each city as a
+point (<i>x</i>,<i>y</i>) in the plane. You may take a random value between
+0 and 999 (both inclusive) as each of the coordinates. After the cities are
+generated, store in a two-dimensional (<i>n</i>&nbsp;x&nbsp;<i>n</i>) table
+the distances <i>d</i>(<i>i</i>,<i>j</i>) between pairs of cities. You may store
+these distances as integers (truncated or rounded values of Euclidean distances).
+For a reason that will be clear soon, it would be worthwhile to sort the cities
+initially with respect to their <i>x</i>-coordinates, before the distances
+are computed and stored in the 2-d matrix.
+</p><p></p><h3 align="left">The Exact Solution</h3>
+<p>Generate (recursively, perhaps) all the (<i>n</i>&nbsp;-&nbsp;1)! cyclic permutations
+of the <i>n</i> cities. Each such permutation would be of the form
+0,<i>i</i><sub>1</sub>,<i>i</i><sub>2</sub>,<tt>...</tt>,<i>i</i><sub><i>n</i>-1</sub>,
+where <i>i</i><sub>1</sub>,<i>i</i><sub>2</sub>,<tt>...</tt>,<i>i</i><sub><i>n</i>-1</sub>
+is a permutation of 1,2,<tt>...</tt>,<i>n</i>&nbsp;-&nbsp;1. For each cyclic permutation,
+compute the cost of the round trip 0,<i>i</i><sub>2</sub>,<i>i</i><sub>2</sub>,<tt>...</tt>,<i>i</i><sub><i>n</i>-1</sub>,0,
+and determine the minimum over all these permutations. This gives you the exact
+minimum cost, but takes O(<i>n</i>!) running time. The implication is that this
+algorithm can handle only small vales of <i>n</i> (like <i>n</i>&nbsp;&lt;=&nbsp;15)
+in a reasonable amount of time.
+</p><p></p><h3 align="left">A Divide-and-conquer Algorithm</h3>
+<p>Suppose that the cities are sorted with respect to their <i>x</i>-coordinates.
+We recursively compute a shortest tour through the left <i>n</i>/2
+cities, and also a shortest tour through the right <i>n</i>/2 cities.
+In the merging step, we identify the edge <i>rt</i> in the left tour
+and the edge <i>uv</i> in the right tour such that replacing these
+edges by <i>rv</i> and <i>ut</i> gives the cheapest tour among all
+choices of <i>r</i> and <i>u</i>. The situation is depicted in the
+following figure.
+</p><center><img src="courseMessage_data/dncTSP.jpg"></center>
+<p>This divide-and-conquer algorithm runs in O(<i>n</i><sup>2</sup>)
+time and can handle large values of <i>n</i>. However, this does not
+look at all possible tours through <i>n</i> cities, and so the solution
+computed by this algorithm is usually not optimal.
+</p><p></p><h3 align="left">A Greedy Algorithm</h3>
+A possible greedy approach to construct a suboptimal TSP tour is
+to iteratively add one city at a time to the tour. The initial tour
+starts and ends at a specified start city (say, City 0) without visiting
+any other city. When the partially constructed tour covers <i>k</i>
+cities, we identify an edge <i>uv</i> in the tour and a yet unvisited
+city <i>w</i> such that replacing <i>uv</i> by the two-leg travel
+<i>uwv</i> leads to the minimum possible increase in the cost. Here,
+the minimum is taken over all choices of <i>u</i> and <i>w</i>.
+<center><img src="courseMessage_data/greedyTSP.jpg"></center>
+<p>After <i>n</i>&nbsp;-&nbsp;1 iterations, all cities are included
+in the tour. The greedy algorithm runs in O(<i>n</i><sup>3</sup>) time.
+</p><p></p><h3 align="left">The Bellman-Held-Karp Dynamic-programming Algorithm</h3>
+A dynamic-programming algorithm proposed independently by Bellman and by
+Held and Karp is now explained. This algorithm outputs a shortest tour
+in less than O(<i>n</i>!) time.
+<p>Let <i>C</i> denote the set of cities,
+and let <i>s</i> be any specific start city. A natural choice is
+<i>C</i>&nbsp;=&nbsp;{0,1,2,<tt>...</tt>,<i>n</i>&nbsp;-&nbsp;1},
+and <i>s</i>&nbsp;=&nbsp;0. Let <i>t</i> be a city other than <i>s</i>,
+and let <i>X</i> be any subset of <i>C</i> not containing <i>s</i> and
+<i>t</i>. By <i>B</i>(<i>s</i>,<i>X</i>,<i>t</i>), we denote the cost of a
+shortest <i>st</i> path that goes through each city in <i>X</i>
+once and only once. The best costs <i>B</i>(<i>s</i>,<i>X</i>,<i>t</i>)
+can be inductively defined as follows. If <i>X</i> is the empty set, then
+<i>B</i>(<i>s</i>,<i>X</i>,<i>t</i>) is the distance <i>d</i>(<i>s</i>,<i>t</i>).
+Otherwise, <i>B</i>(<i>s</i>,<i>X</i>,<i>t</i>) is the minimum of
+<i>B</i>(<i>s</i>,<i>X</i>&nbsp;-&nbsp;{<i>x</i>},<i>x</i>)&nbsp;+&nbsp;<i>d</i>(<i>x</i>,<i>t</i>),
+taken over all choices of the city <i>x</i> in the subset <i>X</i> of
+<i>C</i>.
+</p><center><img src="courseMessage_data/dpTSP.jpg"></center>
+<p>For each <i>t</i> not equal to <i>s</i>, the best cost <i>b</i><sub><i>t</i></sub>&nbsp;=&nbsp;<i>B</i>
+(<i>s</i>,<i>C</i>&nbsp;-&nbsp;{<i>s</i>,<i>t</i>},<i>t</i>) is computed by dynamic programming.
+Finally, the minimum of <i>b</i><sub><i>t</i></sub>&nbsp;+&nbsp;<i>d</i>(<i>t</i>,<i>s</i>)
+(over all choices of <i>t</i> different from <i>s</i>) is the cost of the shortest TSP tour.
+</p><p>Subsets of <i>C</i> can be represented by <i>n</i>-bit integers. The <i>i</i>-th city
+is present in a subset if and only if the <i>i</i>-th bit is 1. Since <i>s</i> is always
+the first argument in <i>B</i>, it suffices to maintain <i>B</i> as a two-dimensional
+array indexed by a subset number and a target city <i>t</i>. Setting to zero a one-bit in an
+integer standing for a subset indicates removal of a city from the subset. This new integer
+is certainly smaller than the original integer.
+</p><p>So far, we have computed the cost of the best TSP tour through the <i>n</i> cities.
+The corresponding tour can be computed with only a little amount of extra effort.
+In addition to the two-dimensional array <i>B</i>(<i>s</i>,<i>X</i>,<i>t</i>), we maintain
+another two-dimensional array <i>L</i>(<i>s</i>,<i>X</i>,<i>t</i>) indexed by the subset <i>X</i>
+and the target city <i>t</i>. <i>L</i>(<i>s</i>,<i>X</i>,<i>t</i>) stands for the city
+visited just before reaching <i>t</i> following the shortest <i>sXt</i> path. If <i>X</i>
+is the empty set, <i>L</i>(<i>s</i>,<i>X</i>,<i>t</i>) is <i>s</i>. Otherwise, we compute
+<i>B</i>(<i>s</i>,<i>X</i>,<i>t</i>) as the minimum of
+<i>B</i>(<i>s</i>,<i>X</i>&nbsp;-&nbsp;{<i>x</i>},<i>x</i>)&nbsp;+&nbsp;<i>d</i>(<i>x</i>,<i>t</i>)
+over all possible choices of <i>x</i> in <i>X</i>. That particular choice of <i>x</i>
+which yields the minimum value is stored as <i>L</i>(<i>s</i>,<i>X</i>,<i>t</i>).
+The tables <i>B</i> and <i>L</i> are updated simultaneously. At the final stage,
+we find the best <i>t</i> for which <i>b</i><sub><i>t</i></sub>&nbsp;+&nbsp;<i>d</i>(<i>t</i>,<i>s</i>)
+is minimized. This <i>t</i> happens to be the source of the last leg of the TSP tour
+(the destination is the start city <i>s</i>). The city <i>x</i> visited just before <i>t</i> in
+the best TSP tour is stored as <i>L</i>(<i>s</i>,<i>C</i>-{<i>s</i>,<i>t</i>},<i>t</i>).
+The city <i>y</i> visited just before reaching <i>x</i> is stored as
+<i>L</i>(<i>s</i>,<i>C</i>-{<i>s</i>,<i>t</i>,<i>x</i>},<i>x</i>), and the city
+just before <i>y</i> is <i>L</i>(<i>s</i>,<i>C</i>-{<i>s</i>,<i>t</i>,<i>x</i>,<i>y</i>},<i>y</i>),
+and so on. In this way, we generate the optimal TSP tour backward until we discover the
+start city <i>s</i> as the last city visited.
+
+</p><p>The Bellman-Held-Karp algorithm runs in O(2<sup><i>n</i></sup><i>n</i><sup>2</sup>) time.
+This expression, although exponential in <i>n</i>, is better than O(<i>n</i>!). In fact,
+the dynamic-programming algorithm gives the optimal solution in a reasonable amount of
+time even for <i>n</i> as large as 25.
+</p><p></p><h3 align="left">Sample Output</h3>
+Present your output as in the following format.
+<pre>   ( 21,993) ( 36,490) ( 59,101) ( 87,740) (193,997) (286, 19) (561,131) (737,100) (821,614) (856,246) (958,136) (962,967) 
+   Exact TSP               : 0-3-1-2-5-6-7-10-9-8-11-4. cost = 3683
+   Divide-and-Conquer TSP  : 0-1-2-5-6-7-9-10-11-8-3-4. cost = 4350
+   Greedy TSP              : 0-1-2-5-6-7-10-9-8-11-3-4. cost = 4082
+   Dynamic programming TSP : 0-4-11-8-9-10-7-6-5-2-1-3. cost = 3683
+</pre>
+<p></p><h3 align="left"><a href="http://cse.iitkgp.ac.in/%7Ewbcm/">Submission site</a></h3>
+<hr noshade="noshade" size="2">
+<div align="right"><a href="http://cse.iitkgp.ac.in/%7Eabhij/course/lab/Algo1/Autumn11/">Back</a>&nbsp;|&nbsp;<a href="http://cse.iitkgp.ac.in/%7Eabhij/">Home</a></div>
+</blockquote>
+
+
+</body></html>
